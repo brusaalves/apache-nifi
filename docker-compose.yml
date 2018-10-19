@@ -1,0 +1,23 @@
+# docker-compose version
+version: '3'
+# networks interfaces configuration
+networks:
+  main:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 150.1.0.0/16
+# containers configurations
+services:
+  apache-nifi:
+    container_name: apache-nifi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      main:
+        ipv4_address: 150.1.1.10
+        aliases:
+          - apachenifi.local
+    volumes:
+      - ./workspace:/workspace
