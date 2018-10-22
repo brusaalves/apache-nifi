@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.2">
+    <description>Template with API's data flows.</description>
+    <groupId>9d0f692b-0166-1000-2de8-e659f8dd7279</groupId>
+    <name>API's template</name>
+    <snippet>
+        <processGroups>
+            <id>87995470-477c-3be4-0000-000000000000</id>
+            <parentGroupId>9509d809-fe67-3f4a-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>0.0</y>
+            </position>
+            <comments>General API's flows.</comments>
+            <contents>
+                <processGroups>
+                    <id>95fd6ea1-ea50-36ea-0000-000000000000</id>
+                    <parentGroupId>87995470-477c-3be4-0000-000000000000</parentGroupId>
+                    <position>
+                        <x>421.0</x>
+                        <y>-38.0</y>
+                    </position>
+                    <comments></comments>
+                    <contents>
+                        <connections>
+                            <id>68d434a1-979b-3ee0-0000-000000000000</id>
+                            <parentGroupId>95fd6ea1-ea50-36ea-0000-000000000000</parentGroupId>
+                            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+                            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+                            <destination>
+<groupId>95fd6ea1-ea50-36ea-0000-000000000000</groupId>
+<id>f8e6fc68-c37e-3f1f-0000-000000000000</id>
+<type>PROCESSOR</type>
+                            </destination>
+                            <flowFileExpiration>0 sec</flowFileExpiration>
+                            <labelIndex>1</labelIndex>
+                            <name></name>
+                            <selectedRelationships>success</selectedRelationships>
+                            <source>
+<groupId>95fd6ea1-ea50-36ea-0000-000000000000</groupId>
+<id>c1fcfb50-6cab-3e10-0000-000000000000</id>
+<type>PROCESSOR</type>
+                            </source>
+                            <zIndex>0</zIndex>
+                        </connections>
+                        <processors>
+                            <id>c1fcfb50-6cab-3e10-0000-000000000000</id>
+                            <parentGroupId>95fd6ea1-ea50-36ea-0000-000000000000</parentGroupId>
+                            <position>
+<x>174.7289499118582</x>
+<y>19.331799406412046</y>
+                            </position>
+                            <bundle>
+<artifact>nifi-standard-nar</artifact>
+<group>org.apache.nifi</group>
+<version>1.7.1</version>
+                            </bundle>
+                            <config>
+<bulletinLevel>WARN</bulletinLevel>
+<comments></comments>
+<concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+<descriptors>
+    <entry>
+        <key>Base Path</key>
+        <value>
+            <name>Base Path</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Listening Port</key>
+        <value>
+            <name>Listening Port</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Max Data to Receive per Second</key>
+        <value>
+            <name>Max Data to Receive per Second</name>
+        </value>
+    </entry>
+    <entry>
+        <key>SSL Context Service</key>
+        <value>
+            <identifiesControllerService>org.apache.nifi.ssl.RestrictedSSLContextService</identifiesControllerService>
+            <name>SSL Context Service</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Authorized DN Pattern</key>
+        <value>
+            <name>Authorized DN Pattern</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Max Unconfirmed Flowfile Time</key>
+        <value>
+            <name>Max Unconfirmed Flowfile Time</name>
+        </value>
+    </entry>
+    <entry>
+        <key>HTTP Headers to receive as Attributes (Regex)</key>
+        <value>
+            <name>HTTP Headers to receive as Attributes (Regex)</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Return Code</key>
+        <value>
+            <name>Return Code</name>
+        </value>
+    </entry>
+</descriptors>
+<executionNode>ALL</executionNode>
+<lossTolerant>false</lossTolerant>
+<penaltyDuration>30 sec</penaltyDuration>
+<properties>
+    <entry>
+        <key>Base Path</key>
+        <value>test-flow</value>
+    </entry>
+    <entry>
+        <key>Listening Port</key>
+        <value>8081</value>
+    </entry>
+    <entry>
+        <key>Max Data to Receive per Second</key>
+    </entry>
+    <entry>
+        <key>SSL Context Service</key>
+    </entry>
+    <entry>
+        <key>Authorized DN Pattern</key>
+        <value>.*</value>
+    </entry>
+    <entry>
+        <key>Max Unconfirmed Flowfile Time</key>
+        <value>60 secs</value>
+    </entry>
+    <entry>
+        <key>HTTP Headers to receive as Attributes (Regex)</key>
+        <value>application/json</value>
+    </entry>
+    <entry>
+        <key>Return Code</key>
+        <value>200</value>
+    </entry>
+</properties>
+<runDurationMillis>0</runDurationMillis>
+<schedulingPeriod>0 sec</schedulingPeriod>
+<schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+<yieldDuration>1 sec</yieldDuration>
+                            </config>
+                            <executionNodeRestricted>false</executionNodeRestricted>
+                            <name>Endpoint</name>
+                            <relationships>
+<autoTerminate>false</autoTerminate>
+<name>success</name>
+                            </relationships>
+                            <state>RUNNING</state>
+                            <style>
+<entry>
+    <key>background-color</key>
+    <value>#000000</value>
+</entry>
+                            </style>
+                            <type>org.apache.nifi.processors.standard.ListenHTTP</type>
+                        </processors>
+                        <processors>
+                            <id>f8e6fc68-c37e-3f1f-0000-000000000000</id>
+                            <parentGroupId>95fd6ea1-ea50-36ea-0000-000000000000</parentGroupId>
+                            <position>
+<x>186.31191739094385</x>
+<y>263.7315655006069</y>
+                            </position>
+                            <bundle>
+<artifact>nifi-standard-nar</artifact>
+<group>org.apache.nifi</group>
+<version>1.7.1</version>
+                            </bundle>
+                            <config>
+<bulletinLevel>WARN</bulletinLevel>
+<comments></comments>
+<concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+<descriptors>
+    <entry>
+        <key>Log Level</key>
+        <value>
+            <name>Log Level</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Log Payload</key>
+        <value>
+            <name>Log Payload</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Attributes to Log</key>
+        <value>
+            <name>Attributes to Log</name>
+        </value>
+    </entry>
+    <entry>
+        <key>attributes-to-log-regex</key>
+        <value>
+            <name>attributes-to-log-regex</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Attributes to Ignore</key>
+        <value>
+            <name>Attributes to Ignore</name>
+        </value>
+    </entry>
+    <entry>
+        <key>attributes-to-ignore-regex</key>
+        <value>
+            <name>attributes-to-ignore-regex</name>
+        </value>
+    </entry>
+    <entry>
+        <key>Log prefix</key>
+        <value>
+            <name>Log prefix</name>
+        </value>
+    </entry>
+    <entry>
+        <key>character-set</key>
+        <value>
+            <name>character-set</name>
+        </value>
+    </entry>
+</descriptors>
+<executionNode>ALL</executionNode>
+<lossTolerant>false</lossTolerant>
+<penaltyDuration>30 sec</penaltyDuration>
+<properties>
+    <entry>
+        <key>Log Level</key>
+        <value>info</value>
+    </entry>
+    <entry>
+        <key>Log Payload</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>Attributes to Log</key>
+    </entry>
+    <entry>
+        <key>attributes-to-log-regex</key>
+        <value>.*</value>
+    </entry>
+    <entry>
+        <key>Attributes to Ignore</key>
+    </entry>
+    <entry>
+        <key>attributes-to-ignore-regex</key>
+    </entry>
+    <entry>
+        <key>Log prefix</key>
+    </entry>
+    <entry>
+        <key>character-set</key>
+        <value>UTF-8</value>
+    </entry>
+</properties>
+<runDurationMillis>0</runDurationMillis>
+<schedulingPeriod>0 sec</schedulingPeriod>
+<schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+<yieldDuration>1 sec</yieldDuration>
+                            </config>
+                            <executionNodeRestricted>false</executionNodeRestricted>
+                            <name>Log</name>
+                            <relationships>
+<autoTerminate>true</autoTerminate>
+<name>success</name>
+                            </relationships>
+                            <state>RUNNING</state>
+                            <style/>
+                            <type>org.apache.nifi.processors.standard.LogAttribute</type>
+                        </processors>
+                    </contents>
+                    <name>TestFlow (Hello World)</name>
+                    <variables/>
+                </processGroups>
+            </contents>
+            <name>API's</name>
+            <variables/>
+        </processGroups>
+    </snippet>
+    <timestamp>10/22/2018 19:39:52 UTC</timestamp>
+</template>
