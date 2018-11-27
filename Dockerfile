@@ -1,2 +1,2 @@
-FROM apache/nifi:1.7.1
+FROM apache/nifi:1.4.0
 LABEL maintener 'Bruno Alves <brunosalves3@gmail.com>'
