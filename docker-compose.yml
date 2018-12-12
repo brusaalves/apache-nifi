@@ -19,5 +19,6 @@ services:
         ipv4_address: 150.1.1.10
         aliases:
           - apachenifi.local
-    volumes:
-      - ./workspace:/workspace
+    # volumes:
+    #   - ./workspace/processors:/opt/nifi/nifi-1.4.0/lib
+    #   - ./workspace/conf:/opt/nifi/nifi-1.4.0/conf
