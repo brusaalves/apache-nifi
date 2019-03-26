@@ -9,19 +9,22 @@ networks:
         - subnet: 150.1.0.0/16
 # containers configurations
 services:
-  apache-nifi:
-    container_name: apache-nifi
-    build:
-      context: .
-      dockerfile: workspace/nifi/Dockerfile
-      args:
-        NIFI_VERSION: 1.7.1
+  nifi:
+    container_name: nifi
+    image: apache/nifi:1.9.0
     networks:
       main:
         ipv4_address: 150.1.1.10
         aliases:
-          - apachenifi.local
+          - nifi.local
     ports:
       - 8080:8080
     volumes:
-      - ./workspace/nifi/custom-libs:/opt/nifi/custom-libs
+      - ./nifi/volumes/logs:/opt/nifi/nifi-current/logs
+      - ./nifi/volumes/conf:/opt/nifi/nifi-current/conf
+      - ./nifi/volumes/database_repository:/opt/nifi/nifi-current/database_repository
+      - ./nifi/volumes/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - ./nifi/volumes/content_repository:/opt/nifi/nifi-current/content_repository
+      - ./nifi/volumes/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - ./nifi/volumes/state:/opt/nifi/nifi-current/state
+      - ./nifi/volumes/extensions:/opt/nifi/nifi-current/extensions
