@@ -167,21 +167,4 @@
         <appender-ref ref="APP_FILE"/>
     </root>
 
-    <!-- custom appender to jsonLogger -->
-    <appender name="JSON_LOGGER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${org.apache.nifi.bootstrap.config.log.dir}/jsonLogger.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${org.apache.nifi.bootstrap.config.log.dir}/jsonLogger_%d{yyyy-MM-dd_HH}.%i.log.gz</fileNamePattern>
-            <maxFileSize>100MB</maxFileSize>
-            <maxHistory>10</maxHistory>
-        </rollingPolicy>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%replace(%msg){'(.*)\[(.*)\]\s',''}%n</pattern>
-        </encoder>
-    </appender>
-    <!-- jsonLogger appender implementation -->
-    <logger name="com.linx.nifi.JsonLogger">
-        <appender-ref ref="JSON_LOGGER"/>
-    </logger>
-
 </configuration>
