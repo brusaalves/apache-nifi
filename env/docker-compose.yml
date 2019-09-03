@@ -22,7 +22,6 @@ services:
       - ./../app/res/logs:/opt/nifi/nifi-current/logs
       - ./../app/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
       - ./../app/res/state:/opt/nifi/nifi-current/state
-      # parameterizable NiFi files
+      # NiFi project files (configurations and packages)
       - ./../app/src/conf:/opt/nifi/nifi-current/conf
-      # nifi 1.9.0 or latest
       - ./../app/src/package/custom:/opt/nifi/nifi-current/lib/custom
