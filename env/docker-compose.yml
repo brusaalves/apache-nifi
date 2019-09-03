@@ -4,16 +4,16 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 150.1.0.0/16
+        - subnet: $ENV_SUBNET
 services:
   nifi:
     container_name: nifi
-    image: apache/nifi:1.9.0
+    image: $NIFI_IMAGE
     networks:
       main:
-        ipv4_address: 150.1.1.10
+        ipv4_address: $NIFI_IP
     ports:
-      - 80:8080
+      - $NIFI_ACCESS_PORT:$NIFI_PORT
     volumes:
       # transitory NiFi data
       - ./../app/res/content_repository:/opt/nifi/nifi-current/content_repository
@@ -24,4 +24,5 @@ services:
       - ./../app/res/state:/opt/nifi/nifi-current/state
       # parameterizable NiFi files
       - ./../app/src/conf:/opt/nifi/nifi-current/conf
-      - ./../app/src/package/custom:/opt/nifi/nifi-current/extensions
+      # nifi 1.9.0 or latest
+      - ./../app/src/package/custom:/opt/nifi/nifi-current/lib/custom
