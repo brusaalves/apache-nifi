@@ -1,0 +1,27 @@
+version: '3'
+networks:
+  main:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: $ENV_SUBNET
+services:
+  nifi:
+    container_name: nifi
+    image: $NIFI_IMAGE
+    networks:
+      main:
+        ipv4_address: $NIFI_IP
+    ports:
+      - $NIFI_ACCESS_PORT:$NIFI_PORT
+    volumes:
+      # transitory NiFi data
+      - ./../app/res/content_repository:/opt/nifi/nifi-current/content_repository
+      - ./../app/res/database_repository:/opt/nifi/nifi-current/database_repository
+      - ./../app/res/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - ./../app/res/logs:/opt/nifi/nifi-current/logs
+      - ./../app/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - ./../app/res/state:/opt/nifi/nifi-current/state
+      # NiFi project files (configurations and packages)
+      - ./../app/src/conf:/opt/nifi/nifi-current/conf
+      - ./../app/src/package/custom:/opt/nifi/nifi-current/lib/custom

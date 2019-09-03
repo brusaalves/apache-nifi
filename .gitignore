@@ -1,0 +1,18 @@
+# eclipse files
+.settings
+.classpath
+.project
+
+# vscode files
+.vscode
+
+# IntelliJ files
+.idea
+*.iml
+.attach*
+
+# Maven files
+target
+
+# flow configuration xml
+app/src/conf/flow.xml.gz
