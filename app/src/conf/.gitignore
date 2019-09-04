@@ -1,0 +1,4 @@
+*
+!.gitignore
+!nifi.properties
+!args.properties

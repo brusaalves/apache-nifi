@@ -8,12 +8,20 @@ networks:
 services:
   nifi:
     container_name: nifi
-    image: $NIFI_IMAGE
+    build:
+      context: ./..
+      dockerfile: ./env/img/nifi.dockerfile
+      args:
+        IMAGE: $NIFI_IMAGE
+    image: brusalves_$NIFI_IMAGE
     networks:
       main:
         ipv4_address: $NIFI_IP
     ports:
       - $NIFI_ACCESS_PORT:$NIFI_PORT
+    environment:
+      - NIFI_WEB_HTTP_PORT=$NIFI_PORT
+      - NIFI_VARIABLE_REGISTRY_PROPERTIES=/opt/nifi/nifi-current/conf/custom/args.properties
     volumes:
       # transitory NiFi data
       - ./../app/res/content_repository:/opt/nifi/nifi-current/content_repository
@@ -23,5 +31,6 @@ services:
       - ./../app/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
       - ./../app/res/state:/opt/nifi/nifi-current/state
       # NiFi project files (configurations and packages)
-      - ./../app/src/conf:/opt/nifi/nifi-current/conf
-      - ./../app/src/package/custom:/opt/nifi/nifi-current/lib/custom
+      - ./../app/src/conf:/opt/nifi/nifi-current/conf/custom
+      - ./../app/src/nar:/opt/nifi/nifi-current/lib/custom
+      - ./../app/src/flow:/opt/nifi/nifi-current/flow
