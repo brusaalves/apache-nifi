@@ -13,6 +13,3 @@
 
 # Maven files
 target
-
-# flow configuration xml
-app/src/conf/flow.xml.gz
