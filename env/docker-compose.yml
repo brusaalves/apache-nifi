@@ -9,8 +9,7 @@ services:
   nifi:
     container_name: nifi
     build:
-      context: ./..
-      dockerfile: ./env/img/nifi.dockerfile
+      context: ./nifi
       args:
         IMAGE: $NIFI_IMAGE
     image: brusalves_$NIFI_IMAGE

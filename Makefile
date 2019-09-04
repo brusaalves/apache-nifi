@@ -1,9 +1,3 @@
-# DEFAULT CONFIG
-BASE_DIR=$(shell pwd)
-
-# IMPORT VARIABLES
-include env/.env
-
 # RUN DOCKER
 run-docker:
 	cd env && docker-compose $(command)
@@ -22,16 +16,23 @@ docker-build:
 docker-build-no-cached:
 	make run-docker command="build --no-cache"
 
-# START AND STOP APPLICATION
+# MAIN COMMANDS
 start:
-	make docker-build && \
 	make docker-up
 stop:
 	make docker-down
-logs:
-	make docker-logs
+restart:
+	make stop && \
+	make start
+build:
+	make docker-build-no-cached
+reload:
+	make build && \
+	make restart
 status:
 	make docker-ps
+logs:
+	make docker-logs
 
 # APACHE NIFI PACKAGES
 # link-nars:
