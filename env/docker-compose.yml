@@ -31,5 +31,5 @@ services:
       - ./../app/res/state:/opt/nifi/nifi-current/state
       # NiFi project files (configurations and packages)
       - ./../app/src/conf:/opt/nifi/nifi-current/conf/custom
-      - ./../app/src/nar:/opt/nifi/nifi-current/lib/custom
+      - ./../app/src/lib:/opt/nifi/nifi-current/lib/custom
       - ./../app/src/flow:/opt/nifi/nifi-current/flow
