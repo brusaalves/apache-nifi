@@ -1,6 +1,6 @@
 version: '3'
 networks:
-  main:
+  nifi:
     driver: bridge
     ipam:
       config:
@@ -14,7 +14,7 @@ services:
         IMAGE: $NIFI_IMAGE
     image: brusalves_$NIFI_IMAGE
     networks:
-      main:
+      nifi:
         ipv4_address: $NIFI_IP
     ports:
       - $NIFI_ACCESS_PORT:$NIFI_PORT
