@@ -23,13 +23,13 @@ services:
       - NIFI_VARIABLE_REGISTRY_PROPERTIES=/opt/nifi/nifi-current/conf/custom/args.properties
     volumes:
       # transitory NiFi data
-      - ./../app/res/content_repository:/opt/nifi/nifi-current/content_repository
-      - ./../app/res/database_repository:/opt/nifi/nifi-current/database_repository
-      - ./../app/res/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
-      - ./../app/res/logs:/opt/nifi/nifi-current/logs
-      - ./../app/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
-      - ./../app/res/state:/opt/nifi/nifi-current/state
+      - ./../app/nifi/res/content_repository:/opt/nifi/nifi-current/content_repository
+      - ./../app/nifi/res/database_repository:/opt/nifi/nifi-current/database_repository
+      - ./../app/nifi/res/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - ./../app/nifi/res/logs:/opt/nifi/nifi-current/logs
+      - ./../app/nifi/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - ./../app/nifi/res/state:/opt/nifi/nifi-current/state
       # NiFi project files (configurations and packages)
-      - ./../app/src/conf:/opt/nifi/nifi-current/conf/custom
-      - ./../app/src/lib:/opt/nifi/nifi-current/lib/custom
-      - ./../app/src/flow:/opt/nifi/nifi-current/flow
+      - ./../app/nifi/src/conf:/opt/nifi/nifi-current/conf/custom
+      - ./../app/nifi/src/lib:/opt/nifi/nifi-current/lib/custom
+      - ./../app/nifi/src/flow:/opt/nifi/nifi-current/flow
