@@ -88,5 +88,6 @@ EXIT /B 0
 REM RUN DOCKER
 :run-docker
     SET operation=%~1
+    ECHO MAKING: docker-compose %operation%
     docker-compose %operation%
 EXIT /B 0
