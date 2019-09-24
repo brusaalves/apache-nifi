@@ -33,9 +33,3 @@ status:
 	make docker-ps
 logs:
 	make docker-logs
-
-# APACHE NIFI PACKAGES
-# link-nars:
-# 	ln -s $(ls $(nars_locations) -d -1 "$PWD/"**/* | grep "\.nar") ./app/src/package/custom
-# unlink-nars:
-# 	rm $(find ./app/src/package/custom -type l)
