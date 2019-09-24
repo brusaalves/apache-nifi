@@ -18,9 +18,6 @@ services:
         ipv4_address: $NIFI_IP
     ports:
       - $NIFI_ACCESS_PORT:$NIFI_PORT
-    environment:
-      - NIFI_WEB_HTTP_PORT=$NIFI_PORT
-      - NIFI_VARIABLE_REGISTRY_PROPERTIES=/opt/nifi/nifi-current/conf/custom/args.properties
     volumes:
       # transitory NiFi data
       - ./../app/nifi/res/content_repository:/opt/nifi/nifi-current/content_repository
