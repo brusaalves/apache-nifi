@@ -75,7 +75,7 @@ Este projeto utiliza o MakeFile (linux) e o bash para facilitar o uso do Apache 
     ```
     make logs
     ```
-    
+
 ---
 * Obs.: 
     - Para usuários de windows, foi desenvolvido um script em batch como alternativa ao MakeFile (do linux). Sua utilização é a mesma dos comandos citados acima.
@@ -84,35 +84,6 @@ Este projeto utiliza o MakeFile (linux) e o bash para facilitar o uso do Apache 
 <br>
 
 ### Estrutura da aplicação
-
-```
-.
-├── app
-│   └── nifi
-│       ├── res
-│       │   ├── content_repository
-│       │   ├── database_repository
-│       │   ├── flowfile_repository
-│       │   ├── logs
-│       │   ├── provenance_repository
-│       │   └── state
-│       └── src
-│           ├── conf
-│           │   ├── args.properties
-│           │   └── nifi.properties
-│           ├── flow
-│           └── lib
-├── env
-│   ├── docker-compose.yml
-│   └── nifi
-│       ├── Dockerfile
-│       └── scripts
-│           └── helpers.sh
-├── LICENSE
-├── make.bat
-├── Makefile
-└── README.md
-```
 
 - Para carregar processadores e serviços customizados no NiFi, os pacotes `nar` devem ser colocados na pasta `/app/nifi/src/lib`.
 

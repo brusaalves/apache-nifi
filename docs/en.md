@@ -8,8 +8,6 @@ Apache NiFi supports powerful and scalable directed graphs of data routing, tran
 
 ### App configuration
 
-<!-- Após clonar este repositório, configure o arquivo `.env` localizado na pasta `/env`. Nele, ficam ficam registradas configurações de ambiente, sendo que, serão necessários passar como parâmetros as seguintes opções: -->
-
 After repository clone, edit `.env` file located on `/env` directory. This file has environments configurations to Docker and your network. The required parameters here are:
 
 ```properties
@@ -29,95 +27,64 @@ NIFI_ACCESS_PORT=XXXX
 NIFI_PORT=XXXX
 ```
 
-<!-- Feito isto, caso haja a necessidade de alteração das configurações do NiFi, basta alterá-las no arquivo `/app/nifi/src/conf/nifi.properties` (que será carregado para dentro do container). -->
-
-
+That done, if you need to change NiFi settings, edit the `/app/nifi/src/conf/nifi.properties` file (which will be loaded into the container).
 
 ---
-* Obs.: 
-    - A aplicação vem com uma configuração pré-definida que pode ser configurada de acordo com a necessidade de implementação.
-    - O "reset" das properties do arquivo `nifi.properties`, feito pela imagem oficial do NiFi, foi desabilitado nessa aplicação.
+* Obs.:
+    - This application contains a simple default configuration, that can be edited if necessary.
+    - The configurations reset available in official NiFi Docker image was disabled on this application.
 ---
 
 <br>
 
-### Executando a aplicação
+### App running
 
-Este projeto utiliza o MakeFile (linux) e o bash para facilitar o uso do Apache NiFi e do Docker. Feitas as configurações, para inicializar o NiFi, executar na raiz do projeto um dos comandos:
+This project uses MakeFile (Linux) and the system command line to facilitate application operations. After configured, execute next commands to operate NiFi:
 
-- Inicialização do NiFi
+- Starting NiFi
     ```
     make start
     ```
 
-- Desligamento do NiFi
+- Disabling NiFi
     ```
     make stop
     ```
 
-- Reinicialização do NiFi
+- Restarting NiFi
     ```
     make restart
     ```
 
-- Build da imagem (docker) do NiFi
+- Build NiFi Docker image
     ```
     make build
     ```
 
-- Build da imagem (docker) e reinicialização do NiFi (para aplicar alterações)
+- Build NiFi Docker image and restart NiFi (to apply changes)
     ```
     make reload
     ```
 
-- Exibição do status dos containers (docker)
+- Show services status (Docker)
     ```
     make status
     ```
 
-- Exibição em tempo real dos logs gerados pelos containers
+- Watch services logs
     ```
     make logs
     ```
     
 ---
 * Obs.: 
-    - Para usuários de windows, foi desenvolvido um script em batch como alternativa ao MakeFile (do linux). Sua utilização é a mesma dos comandos citados acima.
+    - For Windows users, there is a batch script as an alternative to MakeFile. There is no difference between the commands mentioned above.
 ---
 
 <br>
 
-### Estrutura da aplicação
+### Project structure
 
-```
-.
-├── app
-│   └── nifi
-│       ├── res
-│       │   ├── content_repository
-│       │   ├── database_repository
-│       │   ├── flowfile_repository
-│       │   ├── logs
-│       │   ├── provenance_repository
-│       │   └── state
-│       └── src
-│           ├── conf
-│           │   ├── args.properties
-│           │   └── nifi.properties
-│           ├── flow
-│           └── lib
-├── env
-│   ├── docker-compose.yml
-│   └── nifi
-│       ├── Dockerfile
-│       └── scripts
-│           └── helpers.sh
-├── LICENSE
-├── make.bat
-├── Makefile
-└── README.md
-```
+- To load custom processors into NiFi, the `nar` packages should be placed on `/app/nifi/src/lib` folder.
 
-- Para carregar processadores e serviços customizados no NiFi, os pacotes `nar` devem ser colocados na pasta `/app/nifi/src/lib`.
-
-- Para alterar configurações do NiFi, basta editar o arquivo `nifi.properties`, localizado em `/app/nifi/src/conf`. Se for necessário editar outro arquivo de configuração, basta colocá-lo na pasta `/app/nifi/src/conf` (com volume para o container em `/opt/nifi/nifi-current/conf/custom`) referenciá-lo no `nifi.properties`.
+- To update NiFi confiurations, edit the `nifi.properties` file, located in `/app/nifi/src/conf`. To edit or load other configuration file, these should be placed in the `/app/nifi/src/conf` (volume pointed to `/opt/nifi/nifi-current/conf/custom`) folder and reference it on `nifi.properties`.
