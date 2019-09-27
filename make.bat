@@ -3,7 +3,7 @@
 SET trigger=%1
 SET command=%2
 
-CD env
+CD docker
 
 REM ALL TRIGGERS
 IF "%trigger%" == "run-docker" (
