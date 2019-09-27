@@ -1,6 +1,6 @@
 # RUN DOCKER
 run-docker:
-	cd env && docker-compose $(command)
+	cd docker && docker-compose $(command)
 
 # DOCKER
 docker-up:
