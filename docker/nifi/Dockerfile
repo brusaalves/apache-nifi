@@ -2,10 +2,8 @@ ARG IMAGE
 FROM ${IMAGE}
 
 USER root
-RUN mkdir -p /opt/nifi/scripts/custom && \
-    chmod 777 -R /opt/nifi/scripts/custom
-COPY scripts/*.sh /opt/nifi/scripts/custom
-RUN chmod +x /opt/nifi/scripts/custom/helpers.sh
+
+COPY sh/start.sh /opt/nifi/scripts/
+RUN chmod +x /opt/nifi/scripts/start.sh
 
 USER nifi
-ENTRYPOINT ../scripts/custom/helpers.sh init && ../scripts/start.sh
