@@ -1,20 +1,24 @@
 # RUN DOCKER
-run-docker:
-	cd docker && docker-compose $(command)
+docker-cli:
+	cd docker && docker-compose $(cmd)
 
 # DOCKER
 docker-up:
-	make run-docker command="up -d"
+	make docker-cli cmd="up -d"
 docker-down:
-	make run-docker command="down"
+	make docker-cli cmd="down"
 docker-logs:
-	make run-docker command="logs -f"
+	make docker-cli cmd="logs -f"
 docker-ps:
-	make run-docker command="ps"
+	make docker-cli cmd="ps"
 docker-build:
-	make run-docker command="build"
+	make docker-cli cmd="build"
 docker-build-no-cached:
-	make run-docker command="build --no-cache"
+	make docker-cli cmd="build --no-cache"
+docker-exec:
+	make docker-cli cmd="exec $(srv) $(cmd)"
+docker-run:
+	make docker-cli cmd="run $(srv) $(cmd)"
 
 # MAIN COMMANDS
 start:

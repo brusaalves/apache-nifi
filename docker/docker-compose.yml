@@ -27,6 +27,6 @@ services:
       - ./../app/nifi/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
       - ./../app/nifi/res/state:/opt/nifi/nifi-current/state
       # Project sources (configurations, flows and packages)
-      - ./../app/nifi/src/conf:/opt/nifi/nifi-current/conf/custom
+      - ./../app/nifi/src/conf:/opt/nifi/nifi-current/conf
       - ./../app/nifi/src/flow:/opt/nifi/nifi-current/flow
       - ./../app/nifi/src/lib:/opt/nifi/nifi-current/lib/custom
