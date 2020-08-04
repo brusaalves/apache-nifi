@@ -4,7 +4,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 150.1.0.0/16
+        - subnet: $ENV_SUBNET
 services:
   nifi:
     container_name: nifi
@@ -13,9 +13,9 @@ services:
     image: brusalves-nifi
     networks:
       brusalves-nifi:
-        ipv4_address: 150.1.1.10
+        ipv4_address: $NIFI_IP
     ports:
-      - 8080:8080
+      - $NIFI_PORT:8080
     volumes:
       # NiFi resources
       - ./app/nifi/res/content_repository:/opt/nifi/nifi-current/content_repository

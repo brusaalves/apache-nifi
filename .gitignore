@@ -13,3 +13,6 @@
 
 # Maven files
 target
+
+# Parameter files
+.env

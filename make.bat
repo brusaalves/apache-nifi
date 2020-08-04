@@ -3,8 +3,6 @@
 SET trigger=%1
 SET command=%2
 
-CD docker
-
 REM ALL TRIGGERS
 IF "%trigger%" == "run-docker" (
     CALL :run-docker %command%
@@ -37,7 +35,6 @@ IF "%trigger%" == "run-docker" (
 ) ELSE (
     ECHO unknown command
 )
-CD ..
 EXIT /B 0
 
 REM MAIN FUNCTIONS

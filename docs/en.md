@@ -8,31 +8,12 @@ Apache NiFi supports powerful and scalable directed graphs of data routing, tran
 
 ### App configuration
 
-After repository clone, edit `.env` file located on `/env` directory. This file has environments configurations to Docker and your network. The required parameters here are:
-
-```properties
-# Docker network subnet
-ENV_SUBNET=XXX.XXX.XXX.XXX/X
-
-# Docker Image (available on DockerHub)
-NIFI_IMAGE=apache/nifi:X.X.X
-
-# NiFi container IP (according to subnet setted in: ENV_SUBNET)
-NIFI_IP=XXX.XXX.XXX.XXX
-
-# Host machine port to access container
-NIFI_ACCESS_PORT=XXXX
-
-# NiFi port (setted in /app/nifi/src/conf/nifi.properties file)
-NIFI_PORT=XXXX
-```
-
-That done, if you need to change NiFi settings, edit the `/app/nifi/src/conf/nifi.properties` file (which will be loaded into the container).
+After repository clone, edit `.env` based on `example.env` (in repository root).
+That done, if you need to change NiFi settings, edit the `./app/nifi/src/conf/nifi.properties` file (which will be loaded into the container).
 
 ---
 * Obs.:
     - This application contains a simple default configuration, that can be edited if necessary.
-    - The configurations reset available in official NiFi Docker image was disabled on this application.
 ---
 
 <br>
@@ -85,6 +66,8 @@ This project uses MakeFile (Linux) and the system command line to facilitate app
 
 ### Project structure
 
-- To load custom processors into NiFi, the `nar` packages should be placed on `/app/nifi/src/lib` folder.
+- To load custom processors into NiFi, the `nar` packages should be placed on `./app/nifi/src/lib` folder.
 
-- To update NiFi confiurations, edit the `nifi.properties` file, located in `/app/nifi/src/conf`. To edit or load other configuration file, these should be placed in the `/app/nifi/src/conf` (volume pointed to `/opt/nifi/nifi-current/conf/custom`) folder and reference it on `nifi.properties`.
+- NiFi configurations file are located in `./app/nifi/src/conf`.
+
+- NiFi flows are saved in `./app/nifi/src/flow`.
