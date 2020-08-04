@@ -1,6 +1,6 @@
 # RUN DOCKER
 docker-cli:
-	cd docker && docker-compose $(cmd)
+	docker-compose $(cmd)
 
 # DOCKER
 docker-up:

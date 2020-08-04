@@ -1,0 +1,30 @@
+version: '3'
+networks:
+  brusalves-nifi:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 150.1.0.0/16
+services:
+  nifi:
+    container_name: nifi
+    build:
+      context: ./app/nifi/src
+    image: brusalves-nifi
+    networks:
+      brusalves-nifi:
+        ipv4_address: 150.1.1.10
+    ports:
+      - 8080:8080
+    volumes:
+      # NiFi resources
+      - ./app/nifi/res/content_repository:/opt/nifi/nifi-current/content_repository
+      - ./app/nifi/res/database_repository:/opt/nifi/nifi-current/database_repository
+      - ./app/nifi/res/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - ./app/nifi/res/logs:/opt/nifi/nifi-current/logs
+      - ./app/nifi/res/provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - ./app/nifi/res/state:/opt/nifi/nifi-current/state
+      # Project sources (configurations, flows and packages)
+      - ./app/nifi/src/conf:/opt/nifi/nifi-current/conf
+      - ./app/nifi/src/flow:/opt/nifi/nifi-current/flow
+      - ./app/nifi/src/lib:/opt/nifi/nifi-current/lib/custom
