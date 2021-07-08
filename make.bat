@@ -38,18 +38,18 @@ IF "%trigger%" == "run-docker" (
 EXIT /B 0
 
 REM MAIN FUNCTIONS
-:start
+:build
+    CALL :docker-build-no-cached
+EXIT /B 0
+:up
     CALL :docker-up
 EXIT /B 0
-:stop
+:down
     CALL :docker-down
 EXIT /B 0
 :restart
-    CALL :stop
-    CALL :start
-EXIT /B 0
-:build
-    CALL :docker-build-no-cached
+    CALL :down
+    CALL :up
 EXIT /B 0
 :reload
     CALL :build

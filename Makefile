@@ -21,15 +21,15 @@ docker-run:
 	make docker-cli cmd="run $(srv) $(cmd)"
 
 # MAIN COMMANDS
-start:
-	make docker-up
-stop:
-	make docker-down
-restart:
-	make stop && \
-	make start
 build:
 	make docker-build-no-cached
+up:
+	make docker-up
+down:
+	make docker-down
+restart:
+	make down && \
+	make up
 reload:
 	make build && \
 	make restart
