@@ -1,21 +1,22 @@
-version: '3'
+version: "3"
 networks:
-  brusalves-nifi:
+  brusaalves-nifi:
     driver: bridge
     ipam:
       config:
-        - subnet: $ENV_SUBNET
+        - subnet: 150.1.0.0/16
 services:
   nifi:
-    container_name: nifi
-    build:
-      context: ./app/nifi/src
-    image: brusalves-nifi
+    container_name: brusaalves-nifi
+    image: apache/nifi:1.12.0
     networks:
-      brusalves-nifi:
-        ipv4_address: $NIFI_IP
+      brusaalves-nifi:
+        ipv4_address: 150.1.1.10
     ports:
-      - $NIFI_PORT:8080
+      - 8080:8080
+    environment:
+      HOSTNAME: 0.0.0.0
+      NIFI_VARIABLE_REGISTRY_PROPERTIES: ./conf/args.properties
     volumes:
       # Project sources (configurations, flows and packages)
       - ./app/nifi/src/conf:/opt/nifi/nifi-current/conf
