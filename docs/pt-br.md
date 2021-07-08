@@ -8,8 +8,7 @@ O Apache NiFi suporta gráficos direcionados poderosos e escalonáveis ​​da 
 
 ### Configurando a aplicação
 
-Após clonar este repositório, configure o arquivo `.env`, baseado no arquivo `example.env` (na raiz deste repositório).
-Feito isto, caso haja a necessidade de alteração das configurações do NiFi, basta alterá-las no arquivo `./app/nifi/src/conf/nifi.properties` (que será carregado para dentro do container após sua reinicialização).
+Após clonar este repositório, caso haja a necessidade de alteração das configurações do NiFi, basta alterá-las no arquivo `./app/nifi/src/conf/nifi.properties` (que será carregado para dentro do container após sua reinicialização).
 
 ---
 * Obs.: 
@@ -24,12 +23,12 @@ Este projeto utiliza o MakeFile (linux) e o bash para facilitar o uso do Apache 
 
 - Inicialização do NiFi
     ```
-    make start
+    make up
     ```
 
 - Desligamento do NiFi
     ```
-    make stop
+    make down
     ```
 
 - Reinicialização do NiFi
