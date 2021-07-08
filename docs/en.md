@@ -8,8 +8,7 @@ Apache NiFi supports powerful and scalable directed graphs of data routing, tran
 
 ### App configuration
 
-After repository clone, edit `.env` based on `example.env` (in repository root).
-That done, if you need to change NiFi settings, edit the `./app/nifi/src/conf/nifi.properties` file (which will be loaded into the container).
+After repository clone, if you need to change NiFi settings, edit the `./app/nifi/src/conf/nifi.properties` file (which will be loaded into the container).
 
 ---
 * Obs.:
@@ -24,12 +23,12 @@ This project uses MakeFile (Linux) and the system command line to facilitate app
 
 - Starting NiFi
     ```
-    make start
+    make up
     ```
 
-- Disabling NiFi
+- Stopping NiFi
     ```
-    make stop
+    make down
     ```
 
 - Restarting NiFi
